@@ -37,7 +37,7 @@ if [ ! -f "${DEVPISERVER_SERVERDIR}/.nodeinfo" ]; then
 
         if [ ! -z "${DEVPISERVER_INDEX}" ] && ! ( devpi index -l | grep -q -x "${DEVPISERVER_USER}/${DEVPISERVER_INDEX}" ); then
             echo "create index ${DEVPISERVER_USER}/${DEVPISERVER_INDEX}"
-            devpi index -c "${DEVPISERVER_INDEX}"
+            devpi index -c "${DEVPISERVER_INDEX}" bases=root/pypi volatile=True
         fi
 
         devpi logout
